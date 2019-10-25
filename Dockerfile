@@ -22,7 +22,7 @@ COPY \
   setup.sh \
   texlive.profile \
   texlive_pgp_keys.asc \
-  ./mycert.crt /usr/local/share/ca-certificates/mycert.crt \
+  ./mycert.crt \
   /root/
 RUN update-ca-certificates && /root/setup.sh
 
