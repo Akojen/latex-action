@@ -7,7 +7,10 @@ RUN apk --no-cache add \
         python \
         tar \
         wget \
-        xz
+        xz \
+        xclip \
+        ffsend --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+        ca-certificates && rm -rf /var/cache/apk/*
 
 ENV PATH="/opt/texlive/texdir/bin/x86_64-linuxmusl:${PATH}"
 WORKDIR /root
@@ -19,7 +22,8 @@ COPY \
   setup.sh \
   texlive.profile \
   texlive_pgp_keys.asc \
+  ./mycert.crt /usr/local/share/ca-certificates/mycert.crt \
   /root/
-RUN /root/setup.sh
+RUN update-ca-certificates && /root/setup.sh
 
 ENTRYPOINT ["/root/entrypoint.sh"]

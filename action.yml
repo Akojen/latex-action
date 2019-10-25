@@ -1,6 +1,7 @@
 name: Github Action for LaTeX
-description: GitHub Action to compile LaTeX documents
-author: Cheng XU
+description: GitHub Action to compile LaTeX documents and upload them through ffsend to Firefox Send
+author: Cheng XU (original)
+author: A. K.
 inputs:
   root_file:
     description: The root LaTeX file to be compiled
